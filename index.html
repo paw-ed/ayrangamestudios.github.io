@@ -13,7 +13,6 @@
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.70);
     }
-
     *{ box-sizing:border-box; }
     body{
       margin:0;
@@ -24,7 +23,6 @@
       background:#050812;
     }
 
-    /* Arkaplan görseli + blur */
     .bg{
       position:fixed; inset:0;
       background:url("bg.jpg") center/cover no-repeat;
@@ -234,21 +232,20 @@
       <nav class="nav">
         <a class="btn" href="#games">🎮 Oyunlar</a>
         <a class="btn accent" href="#contact">✉️ İletişim</a>
-        <a class="btn" href="/app-ads.txt" target="_blank" rel="noopener">✅ app-ads.txt</a>
+
+        <!-- ÖNEMLİ: başına / koyma. Yoksa paw-ed.github.io/app-ads.txt olur ve 404 verir -->
+        <a class="btn" href="app-ads.txt" target="_blank" rel="noopener">✅ app-ads.txt</a>
       </nav>
     </header>
 
     <section class="hero">
       <h2 class="heroTitle">Basit, hızlı ve eğlenceli mobil oyunlar.</h2>
       <p class="heroDesc">
-        Bu site, stüdyo bilgileri ve doğrulama dosyaları (app-ads.txt) için hazırlanmıştır.
-        Oyunlarımızı aşağıdan inceleyebilir, destek/öneri için e-posta ile bize ulaşabilirsiniz.
+        Bu sayfa, stüdyo bilgileri ve doğrulama dosyaları (app-ads.txt) için hazırlanmıştır.
+        Oyunlarımızı aşağıdan inceleyebilir, destek/öneri için e-posta üzerinden bize ulaşabilirsiniz.
       </p>
       <div class="row">
         <a class="btn accent" href="#games">Oyunlara git</a>
-        <a class="btn" href="https://play.google.com/store/apps/dev?id=YOUR_DEV_ID" target="_blank" rel="noopener">
-          Google Play Geliştirici Sayfası
-        </a>
       </div>
     </section>
 
@@ -284,7 +281,7 @@
         <h2>İletişim</h2>
         <p class="muted">
           Destek, öneri veya iş birliği için aşağıdaki e-posta adresinden bize ulaşabilirsiniz.
-          Konu kısmına ilgili oyunun adını yazmanız işimizi kolaylaştırır.
+          Konu kısmına ilgili oyunun adını yazmanız bize yardımcı olur.
         </p>
 
         <div class="emailBox">
@@ -296,7 +293,8 @@
 
     <footer>
       © <span id="y"></span> Ayran Game Studios •
-      <a class="tinyLink" href="/app-ads.txt" target="_blank" rel="noopener">app-ads.txt</a>
+      <!-- burada da / yok -->
+      <a class="tinyLink" href="app-ads.txt" target="_blank" rel="noopener">app-ads.txt</a>
     </footer>
   </div>
 

@@ -7,7 +7,7 @@
   <meta name="description" content="Ayran Game Studios - Bağımsız mobil oyun geliştiricisi (Google Play)." />
   <style>
     :root{
-      --accent: #f3a24b;      /* turuncumsu */
+      --accent: #f3a24b;
       --bgCard: rgba(10,16,28,.62);
       --stroke: rgba(255,255,255,.10);
       --text: rgba(255,255,255,.92);
@@ -24,7 +24,7 @@
       background:#050812;
     }
 
-    /* Arkaplan görseli + BLUR (daha bulanık olsun diye filter ve opacity verdim) */
+    /* Arkaplan görseli + blur */
     .bg{
       position:fixed; inset:0;
       background:url("bg.jpg") center/cover no-repeat;
@@ -33,7 +33,6 @@
       opacity:.95;
       z-index:-3;
     }
-    /* Üstüne koyu gradient */
     .overlay{
       position:fixed; inset:0;
       background:
@@ -49,7 +48,6 @@
       padding:24px 0 60px;
     }
 
-    /* Üst bar */
     .topbar{
       display:flex;
       align-items:center;
@@ -108,7 +106,6 @@
       border-color: rgba(243,162,75,.35);
     }
 
-    /* Hero */
     .hero{
       margin-top:18px;
       padding:22px;
@@ -127,7 +124,6 @@
     }
     .heroDesc{ margin:0; color:var(--muted); line-height:1.6; max-width:80ch; }
 
-    /* Bölümler */
     .grid{
       margin-top:18px;
       display:grid;
@@ -153,7 +149,6 @@
     }
     .muted{ color:var(--muted); line-height:1.55; }
 
-    /* Oyun kartları */
     .games{
       display:grid;
       grid-template-columns: repeat(2, minmax(0,1fr));
@@ -192,7 +187,6 @@
       margin-top:6px;
     }
 
-    /* Email satırı */
     .emailBox{
       display:flex;
       align-items:center;
@@ -256,9 +250,6 @@
           Google Play Geliştirici Sayfası
         </a>
       </div>
-      <p class="muted" style="margin:0;font-size:12px;">
-        Not: “YOUR_DEV_ID” kısmını sonra istersen birlikte bulup ekleriz. Şimdilik kalsın da sorun değil.
-      </p>
     </section>
 
     <section class="grid">
@@ -287,27 +278,19 @@
             </div>
           </div>
         </div>
-
-        <p class="muted" style="margin-top:12px;font-size:12px;">
-          Yeni oyunlar geldikçe buraya kart ekleriz.
-        </p>
       </div>
 
       <div class="card" id="contact">
         <h2>İletişim</h2>
         <p class="muted">
           Destek, öneri veya iş birliği için aşağıdaki e-posta adresinden bize ulaşabilirsiniz.
-          (Bu sürümde form yok; en güvenlisi bu.)
+          Konu kısmına ilgili oyunun adını yazmanız işimizi kolaylaştırır.
         </p>
 
         <div class="emailBox">
           <div class="email" id="mailText">lootforge35@gmail.com</div>
           <button class="btn" id="copyBtn" type="button">📋 Kopyala</button>
         </div>
-
-        <p class="muted" style="margin-top:10px;font-size:12px;">
-          İpucu: Mail atarken konuya oyunun adını yazarsan daha hızlı döneriz.
-        </p>
       </div>
     </section>
 

@@ -2,317 +2,118 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ayran Game Studios</title>
-  <meta name="description" content="Ayran Game Studios - Bağımsız mobil oyun geliştiricisi (Google Play)." />
-  <style>
-    :root{
-      --accent: #f3a24b;
-      --bgCard: rgba(10,16,28,.62);
-      --stroke: rgba(255,255,255,.10);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-    }
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      min-height:100vh;
-      overflow-x:hidden;
-      background:#050812;
-    }
-
-    .bg{
-      position:fixed; inset:0;
-      background:url("bg.jpg") center/cover no-repeat;
-      transform:scale(1.08);
-      filter: blur(16px) brightness(.70) saturate(1.05);
-      opacity:.95;
-      z-index:-3;
-    }
-    .overlay{
-      position:fixed; inset:0;
-      background:
-        radial-gradient(1200px 600px at 20% 10%, rgba(243,162,75,.18), transparent 60%),
-        radial-gradient(1000px 500px at 80% 20%, rgba(61,156,255,.14), transparent 55%),
-        linear-gradient(180deg, rgba(3,5,12,.55), rgba(3,5,12,.82));
-      z-index:-2;
-    }
-
-    .container{
-      width:min(1100px, 92vw);
-      margin:0 auto;
-      padding:24px 0 60px;
-    }
-
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      padding:14px 16px;
-      border:1px solid var(--stroke);
-      background: rgba(12, 18, 34, .55);
-      backdrop-filter: blur(10px);
-      border-radius:18px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.35);
-    }
-
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      min-width: 260px;
-    }
-    .logo{
-      width:42px; height:42px;
-      border-radius:14px;
-      display:grid; place-items:center;
-      background: linear-gradient(135deg, rgba(243,162,75,.95), rgba(243,162,75,.35));
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 10px 30px rgba(243,162,75,.22);
-      font-weight:900;
-      color:#1b1307;
-      letter-spacing:.5px;
-    }
-    .brand h1{
-      font-size:16px; margin:0;
-      line-height:1.1;
-    }
-    .brand p{ margin:2px 0 0; font-size:12px; color:var(--muted); }
-
-    .nav{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
-    }
-    .btn{
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.06);
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:14px;
-      text-decoration:none;
-      font-size:13px;
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      transition:.15s transform, .15s background;
-      cursor:pointer;
-      user-select:none;
-    }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); }
-    .btn.accent{
-      background: rgba(243,162,75,.16);
-      border-color: rgba(243,162,75,.35);
-    }
-
-    .hero{
-      margin-top:18px;
-      padding:22px;
-      border:1px solid var(--stroke);
-      background: rgba(8,12,24,.50);
-      backdrop-filter: blur(10px);
-      border-radius:22px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.35);
-      display:grid;
-      gap:14px;
-    }
-    .heroTitle{
-      font-size:26px;
-      margin:0;
-      letter-spacing:.2px;
-    }
-    .heroDesc{ margin:0; color:var(--muted); line-height:1.6; max-width:80ch; }
-
-    .grid{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:16px;
-    }
-    @media (max-width: 880px){
-      .grid{ grid-template-columns: 1fr; }
-      .brand{ min-width:auto; }
-    }
-
-    .card{
-      border:1px solid var(--stroke);
-      background: var(--bgCard);
-      backdrop-filter: blur(10px);
-      border-radius:22px;
-      padding:18px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.30);
-    }
-    .card h2{
-      margin:0 0 8px;
-      font-size:16px;
-    }
-    .muted{ color:var(--muted); line-height:1.55; }
-
-    .games{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap:12px;
-      margin-top:12px;
-    }
-    @media (max-width: 700px){
-      .games{ grid-template-columns: 1fr; }
-    }
-
-    .game{
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.05);
-      border-radius:18px;
-      padding:14px;
-      display:grid;
-      gap:10px;
-    }
-    .badge{
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(243,162,75,.30);
-      background: rgba(243,162,75,.10);
-      font-size:12px;
-      color: rgba(255,255,255,.88);
-      width: fit-content;
-    }
-    .game h3{ margin:0; font-size:15px; }
-    .game p{ margin:0; color:var(--muted); font-size:13px; line-height:1.5; }
-
-    .row{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:6px;
-    }
-
-    .emailBox{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      border:1px dashed rgba(255,255,255,.20);
-      background: rgba(0,0,0,.18);
-      padding:10px 12px;
-      border-radius:16px;
-      margin-top:10px;
-    }
-    .email{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size:13px;
-      color: rgba(255,255,255,.90);
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-    }
-
-    footer{
-      text-align:center;
-      margin-top:22px;
-      color: rgba(255,255,255,.55);
-      font-size:12px;
-    }
-    .tinyLink{ color:rgba(255,255,255,.70); }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- SEO -->
+  <title>Ayran Game Studios - Premium Bağımsız Oyun Geliştiricisi | Mobil Oyunlar</title>
+  <meta name="description" content="Ayran Game Studios - Futuristik ve yenilikçi mobil oyunlar geliştiren bağımsız oyun stüdyosu. Google Play'de yayınlanan premium oyun deneyimleri keşfedin." />
+  <meta name="keywords" content="Ayran Game Studios, bağımsız oyun, mobil oyun, Android oyun, Google Play, indie game studio, Türk oyun geliştirici" />
+  <meta name="author" content="Ayran Game Studios" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- OpenGraph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ayran Game Studios - Premium Bağımsız Oyun Geliştiricisi" />
+  <meta property="og:description" content="Futuristik ve yenilikçi mobil oyunlar geliştiren bağımsız oyun stüdyosu. Google Play'de yayınlanan premium oyun deneyimleri keşfedin." />
+  <meta property="og:image" content="https://ayrangamestudios.github.io/assets/images/logo.png" />
+  <meta property="og:url" content="https://ayrangamestudios.github.io" />
+  <meta property="og:site_name" content="Ayran Game Studios" />
+  <meta property="og:locale" content="tr_TR" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ayran Game Studios - Premium Bağımsız Oyun Geliştiricisi" />
+  <meta name="twitter:description" content="Futuristik ve yenilikçi mobil oyunlar geliştiren bağımsız oyun stüdyosu." />
+  <meta name="twitter:image" content="https://ayrangamestudios.github.io/assets/images/logo.png" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="shortcut icon" type="image/png" href="assets/images/logo.png" />
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 
 <body>
-  <div class="bg"></div>
-  <div class="overlay"></div>
-
+  <div class="bg-grid"></div>
   <div class="container">
-    <header class="topbar">
+    <header>
       <div class="brand">
-        <div class="logo">AG</div>
-        <div>
+        <img src="assets/images/logo.png" alt="Ayran Game Studios Logo" class="logo" />
+        <div class="brand-text">
           <h1>Ayran Game Studios</h1>
-          <p>Bağımsız mobil oyun geliştiricisi • Google Play</p>
+          <p>Bağımsız Mobil Oyun Geliştiricisi</p>
         </div>
       </div>
 
-      <nav class="nav">
+      <nav>
         <a class="btn" href="#games">🎮 Oyunlar</a>
-        <a class="btn accent" href="#contact">✉️ İletişim</a>
-
-        <!-- ÖNEMLİ: başına / koyma. Yoksa paw-ed.github.io/app-ads.txt olur ve 404 verir -->
-        <a class="btn" href="app-ads.txt" target="_blank" rel="noopener">✅ app-ads.txt</a>
+        <a class="btn" href="#contact">✉️ İletişim</a>
+        <a class="btn accent" href="app-ads.txt" target="_blank" rel="noopener">✅ app-ads.txt</a>
       </nav>
     </header>
 
     <section class="hero">
-      <h2 class="heroTitle">Basit, hızlı ve eğlenceli mobil oyunlar.</h2>
-      <p class="heroDesc">
-        Bu sayfa, stüdyo bilgileri ve doğrulama dosyaları (app-ads.txt) için hazırlanmıştır.
-        Oyunlarımızı aşağıdan inceleyebilir, destek/öneri için e-posta üzerinden bize ulaşabilirsiniz.
-      </p>
-      <div class="row">
-        <a class="btn accent" href="#games">Oyunlara git</a>
+      <img src="assets/images/logo.png" alt="Ayran Game Studios" class="hero-logo" />
+      <div class="hero-content">
+        <h2>Geleceğin Oyun Deneyimleri</h2>
+        <p>
+          Yenilikçi teknolojiler ve yaratıcı tasarımlarla mobil oyun dünyasında iz bırakıyoruz. 
+          Her oyunumuz, oyunculara unutulmaz anlar yaşatmak için özenle geliştirilmiştir.
+        </p>
+        <a class="btn accent" href="#games">Oyunları Keşfet</a>
       </div>
     </section>
 
-    <section class="grid">
-      <div class="card" id="games">
-        <h2>Oyunlar</h2>
-        <p class="muted">Aşağıdan oyunu seçip Google Play sayfasına gidebilirsin.</p>
+    <section class="games-section" id="games">
+      <h2 class="section-title">Oyunlarımız</h2>
+      <p class="section-subtitle">Google Play'de yayınlanan premium oyun deneyimlerimizi keşfedin</p>
 
-        <div class="games">
-          <div class="game">
-            <span class="badge">🏀 Basket</span>
-            <h3>BasketUp: Race Against Time</h3>
-            <p>Hız ve zamanlamaya odaklı basket oyunu.</p>
-            <div class="row">
-              <a class="btn accent" target="_blank" rel="noopener"
-                 href="https://play.google.com/store/apps/details?id=com.seyma.basketuppp">Google Play’de Aç</a>
-            </div>
-          </div>
+      <div class="games-grid">
+        <div class="game-card">
+          <span class="game-badge">🏀 Basket</span>
+          <h3>BasketUp: Race Against Time</h3>
+          <p>Hız ve zamanlamaya odaklı, adrenalin dolu basket oyunu. Zamanla yarış, skorunu artır ve rekorları kır!</p>
+          <a class="btn accent" href="https://play.google.com/store/apps/details?id=com.seyma.basketuppp" target="_blank" rel="noopener">
+            Google Play'de Aç
+          </a>
+        </div>
 
-          <div class="game">
-            <span class="badge">⚔️ Aksiyon</span>
-            <h3>Düello Kılıcı: Savaş Oyunu</h3>
-            <p>Kısa, aksiyon dolu kılıç düellosu deneyimi.</p>
-            <div class="row">
-              <a class="btn accent" target="_blank" rel="noopener"
-                 href="https://play.google.com/store/apps/details?id=com.seyma.duellokilici6">Google Play’de Aç</a>
-            </div>
-          </div>
+        <div class="game-card">
+          <span class="game-badge">⚔️ Aksiyon</span>
+          <h3>Düello Kılıcı: Savaş Oyunu</h3>
+          <p>Kısa, aksiyon dolu kılıç düellosu deneyimi. Stratejik hamlelerle rakiplerini yen ve şampiyon ol!</p>
+          <a class="btn accent" href="https://play.google.com/store/apps/details?id=com.seyma.duellokilici6" target="_blank" rel="noopener">
+            Google Play'de Aç
+          </a>
         </div>
       </div>
+    </section>
 
-      <div class="card" id="contact">
-        <h2>İletişim</h2>
-        <p class="muted">
-          Destek, öneri veya iş birliği için aşağıdaki e-posta adresinden bize ulaşabilirsiniz.
-          Konu kısmına ilgili oyunun adını yazmanız bize yardımcı olur.
-        </p>
+    <section class="contact-section" id="contact">
+      <h2>İletişim</h2>
+      <p>
+        Destek, öneri veya iş birliği için aşağıdaki e-posta adresinden bize ulaşabilirsiniz. 
+        Konu kısmına ilgili oyunun adını yazmanız bize yardımcı olur.
+      </p>
 
-        <div class="emailBox">
-          <div class="email" id="mailText">lootforge35@gmail.com</div>
-          <button class="btn" id="copyBtn" type="button">📋 Kopyala</button>
-        </div>
+      <div class="email-box">
+        <div class="email" id="mailText">lootforge35@gmail.com</div>
+        <button class="btn" id="copyBtn" type="button">📋 Kopyala</button>
       </div>
     </section>
 
     <footer>
-      © <span id="y"></span> Ayran Game Studios •
-      <!-- burada da / yok -->
-      <a class="tinyLink" href="app-ads.txt" target="_blank" rel="noopener">app-ads.txt</a>
+      © <span id="year"></span> Ayran Game Studios •
+      <a href="app-ads.txt" target="_blank" rel="noopener">app-ads.txt</a>
     </footer>
   </div>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-
-    document.getElementById("copyBtn").addEventListener("click", async () => {
-      const text = document.getElementById("mailText").textContent.trim();
-      try{
-        await navigator.clipboard.writeText(text);
-        const btn = document.getElementById("copyBtn");
-        const old = btn.textContent;
-        btn.textContent = "✅ Kopyalandı";
-        setTimeout(() => btn.textContent = old, 1200);
-      }catch(e){
-        alert("Kopyalanamadı. Mail: " + text);
-      }
-    });
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
